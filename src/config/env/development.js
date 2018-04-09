@@ -7,7 +7,7 @@ export default {
   MONGOOSE_DEBUG: true,
   passportSecret: 'stayhungrystayfoolish',
   db: 'mongodb://localhost/my-api-development',
-  port: 4040,
+  port: 8088,
   MolUrlJava: javaApiBaseUrl + '/NG/molPaymentSend', //"https://14369f47.ngrok.io/NG/molPaymentSend"
   MolSuccessUrlJava: javaApiBaseUrl + '/NG/molPaymentSuccess',
   MolReturnUrl: reactClientBaseUrl + '/payment_status?referenceId=',
