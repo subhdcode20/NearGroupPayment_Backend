@@ -170,43 +170,33 @@ function getUserCoinsDetails(req, res) {
 
   let getCoinsDetailsUrl = config.getCoinsDetailsJavaUrl + customerId //"d65ac649d9f54ed1853c1bd3ddd0e693"   //"https://06489a03.ngrok.io/NG/getCoinHistory?channelId=" + customerId
   console.log('getCoinsDetailsUrl= ', getCoinsDetailsUrl)
-  axios
-    .get(getCoinsDetailsUrl)
-    .then(response => {
-      // that.setState({loading: false}, () => {
-      //   console.log('loading removed ', this.state);
-      // })
-      console.log('mol get coin details response = ', response.data)
-      global.channelId = response.data.channelId
-      global.totalCoins = response.data.totalCoins
+  try {
+    axios
+      .get(getCoinsDetailsUrl)
+      .then(response => {
+        // that.setState({loading: false}, () => {
+        //   console.log('loading removed ', this.state);
+        // })
+        console.log('mol get coin details response = ', response.data)
 
-      let coinsDetails = JSON.parse(response.data.data)
-      console.log('coinsDetails= ', coinsDetails)
-      response.data['coinsDetails'] = coinsDetails
-
-      res.status(200).send(response.data)
-
-      // if(response.status == 200) {
-
-      //   console.log('mol response success');
-
-      //   that.setState({paymentResult: response.data}, () => {
-
-      //     console.log('result state set', this.state);
-
-      //   })
-
-      // } else {
-
-      //   console.log('mol payment result response error');
-
-      // }
-    })
-    .catch(e => {
-      console.log('mol get coins details error ', e)
-      throw Error(e)
-      res.status(500).send('error')
-    })
+        if (response.data['Grant Access']) {
+          global.channelId = response.data.channelId
+          global.totalCoins = response.data.totalCoins
+          console.log('get coins success')
+          let coinsDetails = JSON.parse(response.data.data)
+          console.log('coinsDetails= ', coinsDetails)
+          response.data['coinsDetails'] = coinsDetails
+        }
+        res.status(200).send(response.data)
+      })
+      .catch(e => {
+        console.log('mol get coins details error ', e)
+        res.status(500).send('error')
+      })
+  } catch (e) {
+    console.log('try catch error= ', e)
+    res.status(500).send(e)
+  }
 }
 
 export default { molPayPaymentRequest, molPaymentSuccess, getUserCoinsDetails }
