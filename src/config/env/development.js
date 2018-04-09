@@ -1,4 +1,4 @@
-var javaApiBaseUrl = 'https://f3cd3f31.ngrok.io'
+var javaApiBaseUrl = 'https://509f3ce8.ngrok.io'
 var reactClientBaseUrl = 'https://lala.neargroup.me/#'
 var getCoinsDetailsJavaUrl = 'https://09c3112c.ngrok.io/NG/getCoinHistory?channelId='
 
