@@ -1,5 +1,5 @@
 var javaApiBaseUrl = 'https://59b2ba64.ngrok.io'
-var reactClientBaseUrl = 'https://lala.neargroup.me/#'
+var reactClientBaseUrl = 'http://lala.neargroup.me/#'
 var getCoinsDetailsJavaUrl = 'https://3d30641b.ngrok.io/NG/getCoinHistory?channelId='
 
 export default {
